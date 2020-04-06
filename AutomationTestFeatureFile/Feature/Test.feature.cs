@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I click on Sign in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.And("Enter valid e-mail TihomrG@abv.bg", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter new valid email for every registration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
  testRunner.And("Click on Create account button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -145,17 +145,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click on registerButton", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
- testRunner.Then("My account message should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("welcome message should be displayed in user profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Error appears when The fields are not field correctly")]
+        [NUnit.Framework.DescriptionAttribute("Error appears when incorrectly filled fields")]
         [NUnit.Framework.CategoryAttribute("negative")]
         [NUnit.Framework.TestCaseAttribute("Tihomir", "Georgiev", "GT@abv.bg", "asd1234", "asdq", "Florida", "123", "123456789", "dsarqwewq", null)]
-        public virtual void ErrorAppearsWhenTheFieldsAreNotFieldCorrectly(string firstName, string lastName, string email, string password, string address, string city, string postalCode, string mobilephone, string aliasAddress, string[] exampleTags)
+        public virtual void ErrorAppearsWhenIncorrectlyFilledFields(string firstName, string lastName, string email, string password, string address, string city, string postalCode, string mobilephone, string aliasAddress, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "negative"};
@@ -164,7 +164,7 @@ this.ScenarioInitialize(scenarioInfo);
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Error appears when The fields are not field correctly", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Error appears when incorrectly filled fields", null, @__tags);
 #line 24
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -192,7 +192,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I click on Sign in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
- testRunner.And(string.Format("Enter valid e-mail {0}", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("Enter unregisterd email for every registration {0}", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 28
  testRunner.And("Click on Create account button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -228,7 +228,8 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click on registerButton", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 39
- testRunner.Then("Error appears", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("A error message should be displayed on top of the page about unsuccessful registr" +
+                        "ation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
