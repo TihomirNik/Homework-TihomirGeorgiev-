@@ -5,7 +5,7 @@
 Scenario: Create successfully account with correct information
 	Given I naovigate to Automationpractice website
 	When I click on Sign in button
-	And Enter valid e-mail TihomrGe@abv.bg
+	And I enter new valid email for every registration
 	And Click on Create account button
 	And I enter my First Name Tihomir
 	And I enter my Last Name Georgiev
@@ -17,14 +17,14 @@ Scenario: Create successfully account with correct information
 	And I enter my Mobile phone 123456789
 	And I enter the Assign an address alias for future reference somewhere else
 	And I click on registerButton
-	Then My account message should be visible	
+	Then Welcome message should be displayed in user profile page
 	
 
 	@negative 
-Scenario: Error appears when The fields are not field correctly
+Scenario: Error appears when the postal code is field incorrectly
 	Given I naovigate to Automationpractice website
 	When I click on Sign in button
-	And Enter valid e-mail <email>
+	And Enter unregisterd email for every registration <email>
 	And Click on Create account button
 	And I enter my First Name <firstName>
 	And I enter my Last Name <lastName>
@@ -36,7 +36,7 @@ Scenario: Error appears when The fields are not field correctly
 	And I enter my Mobile phone <mobilephone>
 	And I enter the Assign an address alias for future reference <aliasAddress>
 	And I click on registerButton
-	Then Error appears
+	Then A error message should be displayed on top of the page about invalid input of the postal code
 	Examples:
 	| firstName | lastName | email     | password | address | city     | postalCode | mobilephone | aliasAddress |
 	| Tihomir   | Georgiev | GT@abv.bg | asd1234  | asdq    | Florida  | 123        | 123456789   | dsarqwewq    |

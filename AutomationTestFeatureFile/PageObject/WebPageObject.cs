@@ -1,11 +1,6 @@
-﻿using Amazon.DynamoDBv2;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomationTestFeatureFile.PageObject
 {
@@ -37,12 +32,28 @@ namespace AutomationTestFeatureFile.PageObject
         {
             this.driver = driver;
         }
-        public void clickOnSignInButton()
+        public void ClickOnSignInButton()
         {
             driver.FindElement(signInButton).Click();
         }
 
-        public void enterTextInEmailField(string email)
+        public string GenerateRandomEmail()
+        {
+            string mailEnding = "@abv.bg";
+            Random random = new Random();
+            int mailNumber = random.Next(1000);
+            return mailNumber+mailEnding;
+        }
+
+        public void EnterNewEmailForRegistration()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(emailField));
+            driver.FindElement(emailField).Clear();
+            driver.FindElement(emailField).SendKeys(GenerateRandomEmail());
+        }
+
+        public void EnterTextInEmailField(string email)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(emailField));
@@ -55,7 +66,7 @@ namespace AutomationTestFeatureFile.PageObject
             driver.FindElement(createAccountButton).Click();
         }
 
-        public void EnterFirstName(string firstName)
+        public void EnterFirstNameInFirstNameField(string firstName)
         {
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -64,63 +75,63 @@ namespace AutomationTestFeatureFile.PageObject
             driver.FindElement(firstNameField).SendKeys(firstName);
 
         }
-        public void EnterLastName(string lastName)
+        public void EnterLastNameInLastNameField(string lastName)
         {
             driver.FindElement(lastNameField).Clear();
             driver.FindElement(lastNameField).SendKeys(lastName);
 
         }
 
-        public  void enterPassword(string password)
+        public  void EnterPasswordInPasswordField(string password)
         {
             driver.FindElement(passwordField).Clear();
             driver.FindElement(passwordField).SendKeys(password);
         }
 
-        public void enterAddress(string address)
+        public void EnterAddressInAddressField(string address)
         {
             driver.FindElement(addressField).SendKeys(address);
         }
 
-        public void enterCity(string city)
+        public void EnterCityInCityField(string city)
         {
             driver.FindElement(cityField).SendKeys(city);
         }
 
-        public void enterPostalCode(string postalCode)
+        public void EnterPostalCodeInPostalCodeField(string postalCode)
         {
             driver.FindElement(postalField).SendKeys(postalCode);
         }
 
-        public void enterMobilePhone(string mobilephone)
+        public void EnterMobilePhoneInMobilePhoneField(string mobilephone)
         {
             driver.FindElement(mobilePhoneField).SendKeys(mobilephone);
         }
 
-        public void enterAliasAddress(string aliasAddress)
+        public void EnterAliasAddressInAlliasAddressField(string aliasAddress)
         {
             driver.FindElement(aliesAddressField).SendKeys(aliasAddress);
         }
 
-        public void chooseFromDropdown()
+        public void ChooseStateFromDropdown()
         {
             SelectElement stateFromDropDown = new SelectElement(driver.FindElement(stateDropdown));
             stateFromDropDown.SelectByText(state);
         }
 
-        public void clickRegisterButton()
+        public void ClickRegisterButton()
         {
             driver.FindElement(registerButton).Click();
         }
 
-        public bool isSuccessful()
+        public bool IsSuccessful()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(welcomeMessage));
             return driver.FindElement(welcomeMessage).Displayed;
         }
 
-        public bool inNotSuccessful()
+        public bool InNotSuccessful()
         {
             return driver.FindElement(errorMessage).Displayed;
         }
